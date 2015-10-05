@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+// Path
+//----------------------------------------------------------------------------//
+
+$font_path: '/g/fonts/';				// Путь к глобальным шрифтам
+$pie_path: '/g/libs/pie/20b1/pie.htc';	// Путь к глобальному pie
+
+// IE bug fix
+//----------------------------------------------------------------------------//
+
+$fix: pie;								// Объявляем pie
+$experimental-support-for-pie: false;	// pie выключен
+
+// Zombie browser
+//----------------------------------------------------------------------------//
+
+$experimental-support-for-webkit: true;
+$experimental-support-for-mozilla: true;
+$experimental-support-for-opera: true;
+$experimental-support-for-microsoft: true;
+
+// Main frame
+//----------------------------------------------------------------------------//
+
+$siteWidth:    990px;					// Ширина
+
+$headerHeight: 100px;					// Минимальная высота шапки
+$footerHeight: 100px;					// Минимальная высота футора
+
+$SidebarLeft:  250px;					// Ширина левой колонки
+$SidebarRight: 250px;					// Ширина правой колонки
+
+// Font's
+//----------------------------------------------------------------------------//
+
+@import "global:/s3/makeup/sass/defaults/font-family.scss";
+
+// Site Font-style's
+//----------------------------------------------------------------------------//
+
+$siteFontFamily: $arial;				// Основное семейство
+$siteFontSize: 1.4rem;					// Основной размер
+
+// Table-style's
+//----------------------------------------------------------------------------//
+
+$tableBorder: 1px solid #afafaf;		// Цвет границы
+$tableThBackground: #f00;				// Фон заголовка
+$tableThColor: #fff;					// Цвет заголовка
+$tablePadding: .5em;					// Отступы в ячейке
+
+// Main Color's
+//----------------------------------------------------------------------------//
+
+$mainColor1: #ffe680;
+$mainColor2: #b5e3ff;
+$mainColor3: #ffacaa;
+$mainColor4: #dbdbdb;
+$mainColor5: #bff08e;
+
+$lightColor: #fff;						// Белый цвет
+$darkColor:  #000;						// Черный цвет
+
+// Text & link Color's
+//----------------------------------------------------------------------------//
+
+$siteColor: #383838;					// Цвет шрифта
+$linkColor: #03b7d8;					// Цвет ссылок
+$HnColor:   #383838;					// Цвет заголовка
+
+// Setting
+
+@import "css/_functions.scss";
+@import "css/_mixins.scss";
+@import "global:/s3/makeup/sass/defaults/classes.scss";
+@import "css/_defaults.scss";
+
+@include font-face('OpenSans', 'open_sans/open_sans-r');
+@include font-face('OpenSans', 'open_sans/open_sans-b', $weight: bold);
+
+@import "css/_styles.scss";
+@import "css/_shop.scss";
