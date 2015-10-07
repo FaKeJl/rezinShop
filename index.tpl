@@ -225,7 +225,7 @@
 					</div>
 				</div>
 
-			</div>
+			</div> <!-- .footer-inner -->
 			
 		</footer> <!-- .site-footer -->
 	</div>
