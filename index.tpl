@@ -16,6 +16,13 @@
 <link rel="stylesheet" href="images/css/theme.scss.css">
 <link rel="stylesheet" href="/g/css/styles_articles_tpl.css">
 {$common_js}
+<script src="/g/libs/jquery/1.10.2/jquery.min.js"></script>
+{include file="global:shop2.v2-init.tpl"}
+
+<script src="images/js/nouislider.js"></script>
+<script src="images/js/jquery.easydropdown.min.js"></script>
+<script src="images/js/owl.carousel.min.js"></script>
+
 <!--[if lt IE 10]>
 <script src="/g/libs/ie9-svg-gradient/0.0.1/ie9-svg-gradient.min.js"></script>
 <script src="/g/libs/jquery-placeholder/2.0.7/jquery.placeholder.min.js"></script>
@@ -27,10 +34,13 @@
 <![endif]-->
 </head>
 <body>
+
 	<div class="site-wrapper">
 		<header role="banner" class="site-header">
-			
+			<div class="empty-block"></div>
 			<div class="header-panel">
+
+				<a href="{get_seo_url mode='cart' uri_prefix=$shop2.uri}" class="shop-cart-mobile-button"></a>
 
 				<div class="header-panel--inner">
 				
@@ -70,11 +80,9 @@
 
 					<div class="site-search--wrapper clear-self">
 						<div class="shop-search--wrapper">
-							<div class="shop-search--button">Поиск</div>
-							<form class="hop-search--dropdown" action="#">
-								
-							</form>
+							<div class="shop-search--button">Поиск</div>							
 						</div>
+						{include file="global:shop2.v2-search-form.tpl"}
 						<form action="/search" class="site-search clear-self">
 							<button type="submit">Найти</button>
 							<label>
@@ -84,14 +92,7 @@
 					</div>
 				</div>
 
-				<div class="shop-cart">
-
-					<div class="shop-cart--amount">10</div>
-					<div class="shop-cart--total">Моя корзина: <strong>25 500</strong> руб.</div>
-
-					<a href="#" class="shop-cart--checkout">Оформить заказ</a>
-					
-				</div>
+				{include file="global:shop2.v2-cart-preview.tpl"}
 			</div>
 
 			<div class="navigations--panel" data-duratoin="5">
@@ -133,16 +134,43 @@
 			</div>
 			<div class="site-overlay"></div>
 		</header> <!-- .site-header -->
-
+		
 		<div class="site-container">
+			{*if $mode == 'main' || $page.plugin_id != 16}
+			<div class="slider-wrapper">
+				<div class="owl-carousel">
+					<div class="img_wrapper"><img src="files/slide1.jpg" alt=""></div>
+					<div class="img_wrapper"><img src="files/slide2.jpg" alt=""></div>
+				</div>
+			</div>
+			{/if*}
+			<div class="content_wrap">
 
-			<aside role="complementary" class="site-sidebar right">
-				<div style="padding: 20px 15px;"><strong>SIDEBAR RIGHT:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-			</aside> <!-- .site-sidebar.right -->
+				{if $plugin_id != 16}
+				<aside role="complementary" class="site-sidebar right">
+					{*if $mode == 'folder'*}
+		                {include file="global:shop2.v2-filter.tpl" block_filter=1}
+		            {*/if*}
+				</aside> <!-- .site-sidebar.right -->
+				{/if}
 
-			<main role="main" class="site-main">
-				<div style="padding: 20px 15px;"><strong>MAIN:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-			</main> <!-- .site-main -->
+				<main role="main" class="site-main">
+					<div class="site-main--inner">
+						<div class="main_content">
+							<div class="button">НАЖМИ СУКА!</div>
+							<div class="page-path">
+								<a href="#">Главная</a>  /  Каталог товаров
+							</div>
+							<h1>Главная</h1>
+
+							{tpl.body}
+
+							
+							<p>Милан, Париж, Нью-Йорк, Лондон – что объединяет эти города? Правильно – мода! «Gucci», «Armani», «Louis Vuitton» – законодатели моды. Ведь внешний вид важен! Миллионы людей ходят в торговые центры и бутики, покупая там одежду, еще столько же сидят дома и заказывают костюмы, туфли, свитера, футболки и др. через Интернет.</p>
+						</div>
+					</div>
+				</main> <!-- .site-main -->
+			</div>
 		</div>
 
 		<footer role="contentinfo" class="site-footer">
@@ -200,6 +228,8 @@
 					</div>
 				</div>
 
+				
+
 				<div class="footer-bottom-container">
 
 					<div class="social-network-bot">
@@ -231,7 +261,6 @@
 	</div>
 	<script src="images/js/flexFix.js"></script>
 	<script src="images/js/animit.js"></script>
-	<script src="/g/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="images/js/swipeMenu2.js"></script>
 	<script src="images/js/main.js" charset="utf-8"></script>
 </body>

@@ -29,7 +29,7 @@ $headerHeight: 100px;					// Минимальная высота шапки
 $footerHeight: 100px;					// Минимальная высота футора
 
 $SidebarLeft:  250px;					// Ширина левой колонки
-$SidebarRight: 250px;					// Ширина правой колонки
+$SidebarRight: 220px;					// Ширина правой колонки
 
 // Font's
 //----------------------------------------------------------------------------//
@@ -39,8 +39,8 @@ $SidebarRight: 250px;					// Ширина правой колонки
 // Site Font-style's
 //----------------------------------------------------------------------------//
 
-$siteFontFamily: $arial;				// Основное семейство
-$siteFontSize: 1.4rem;					// Основной размер
+$siteFontFamily: 'OpenSans';				// Основное семейство
+$siteFontSize: 14px;					// Основной размер
 
 // Table-style's
 //----------------------------------------------------------------------------//
@@ -75,6 +75,8 @@ $HnColor:   #383838;					// Цвет заголовка
 @import "css/_mixins.scss";
 @import "global:/s3/makeup/sass/defaults/classes.scss";
 @import "css/_defaults.scss";
+@import "css/_dropdown_select.scss";
+@import "css/_owl-carousel.scss";
 
 @include font-face('OpenSans', 'open_sans/open_sans-r');
 @include font-face('OpenSans', 'open_sans/open_sans-b', $weight: bold);

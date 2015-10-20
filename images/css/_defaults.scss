@@ -4,8 +4,8 @@
 
 //@include text-shadow-base-styles;
 
-.hide{display: none;}
-.show{display: block;}
+.hide{display: none !important;}
+.show{display: block !important;}
 .invisible{visibility: hidden;}
 .visible{visibility: visible;}
 .reset-indents{@include reset-indents;}
