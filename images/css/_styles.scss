@@ -94,19 +94,6 @@ table img {
 	}
 }
 
-.site-overlay {
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, .8);
-	visibility: hidden;
-	opacity: 0;
-	@include transition(all .27s ease-in-out);
-}
-
 // Site wrapper
 //----------------------------------------------------------------------------//
 
@@ -1146,6 +1133,9 @@ table img {
 	margin-top: 4px;
 }
 
+.pudgeJS-overlay {
+	background-color: rgba(0,0,0,.6)
+}
 
 @media screen and (max-width: 1023px) {
 
@@ -1153,16 +1143,15 @@ table img {
 		position: fixed;
 		z-index: 2;
 		top: 0;
-		right: 60px;
 		left: 0;
-		min-width: 260px;
-		max-width: 354px;
+		right: 60px;
+		width: 260px;
 		height: 100%;
 		background-color: #848f9c;
 		box-shadow: 0 7px 18px rgba(0, 0, 0, .13);
 		@include transform(translateX(-100%) translateZ(0));
 
-		&.swipeMenu-opened {
+		&.pudgeJS-opened {
 			bottom: -20px;
 
 			.navigation--inner {
@@ -1175,12 +1164,6 @@ table img {
 				&::after {
 					background: url(data-image-svg(18px, 18px, '<path fill="#fff" d="M18,2.1L15.9,0L9,6.9L2.1,0L0,2.1L6.9,9L0,15.9L2.1,18L9,11.1l6.9,6.9l2.1-2.1L11.1,9L18,2.1z"/>')) 50% 50% no-repeat;
 				}
-			}
-
-			& + .site-overlay {
-				opacity: 1;
-				visibility: visible;
-				bottom: -100px;
 			}
 		}
 	}

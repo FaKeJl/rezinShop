@@ -17,27 +17,38 @@
 			navIsOpened = false,
 			isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-
 		// table wrapp
 		$table.wrap("<div class=\"table-wrapper\"></div>");
 
-		if (isMobile && $win.width()<= 1024) {
-			var swipeMenu = $nav.swipeMenu({
-				// duration: .27,
-				wrapper: $siteWrapper,
-				button: ".categories--title"
-			});
-			var swipeFilter = $('.shop-filter').swipeMenu({
-				// duration: .27,
-				wrapper: $siteWrapper,
-				button: ".button"
-			});
+		if (isMobile && $win.width() <= 1024) {
+			// var swipeMenu = $nav.swipeMenu({
+			// 	// duration: .27,
+			// 	wrapper: $siteWrapper,
+			// 	button: ".categories--title"
+			// });
+			// var swipeFilter = $('.shop-filter').swipeMenu({
+			// 	// duration: .27,
+			// 	wrapper: $siteWrapper,
+			// 	button: ".button"
+			// });
+
 		} else {
 			$navTitle.click(function() {
 				$('.categories--dropdown').toggleClass('show');
 			});
 		}
-			
+
+		$nav.pudgeJS();
+
+		$('.categories--title').on('click', function myFunc() {
+			$nav.pudgeJS('toggle');
+		});
+
+		// $('.shop-filter').pudgeJS();
+
+		// $('.button').on('click', function() {
+		// 	$('.shop-filter').pudgeJS("toggle");
+		// })
 
 		// MAIN_SLIDER
 		$(".owl-carousel").owlCarousel({
@@ -69,7 +80,6 @@
 
 			elem.noUiSlider.on('update', function( values, handle ) {
 				var value = values[handle];
-					
 
 				if ( handle ) {
 					upper.value = Math.round(value);
