@@ -30,7 +30,7 @@
 			var swipeFilter = $('.shop-filter').swipeMenu({
 				// duration: .27,
 				wrapper: $siteWrapper,
-				button: ".button"
+				button: ".push_to_filter, .close_filter"
 			});
 		} else {
 			$navTitle.click(function() {
@@ -87,6 +87,11 @@
 			});
 		});
 
+		// CUSTOM SCROLL
+		if ($win.width() < 1024) {
+			$('#cust').customScroll();	
+		}
+		
 
 		// SEARCH_ELEMENTS
 

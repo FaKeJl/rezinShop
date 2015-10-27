@@ -1071,7 +1071,7 @@
 			$('.product-list-thumbs').each(function() {
 				var $this = $(this);
 
-				$this.find('.product-item-thumb').eachRow(function(group) {
+				$this.find('.product-thumb').eachRow(function(group) {
 					var heights;
 					var names = group.find('.product-name');
 					var nHeights;

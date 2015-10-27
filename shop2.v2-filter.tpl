@@ -105,20 +105,20 @@
 		
 		{if $has_params || $page.has_filter_params}
 			<div class="filter_title">Фильтр товаров</div>
-			<form action="#" class="shop-filter">
+			<form id="cust" action="#" class="shop-filter">
+				
 				<a id="shop2-filter"></a>
 
 				{$filter}
-
-				<div class="result {if $after && !$found}no-result{/if} {if !$after}hide{/if}">
-					{#SHOP2_FOUND#}: <span id="filter-result">{if !$after}0{else}{$found|default:0}{/if}</span>
-					<span class="result-arrow">&nbsp;</span>
+				<div class="result_wrapper">
+					<div class="result">
+						{#SHOP2_FOUND#}: <span id="filter-result">{if !$after}0{else}{$found|default:0}{/if}</span>
+					</div>
+					<a href="#" class="shop-btn shop2-filter-go">{#SHOP2_SHOW#}</a>
+					<a href="{$SCRIPT_NAME}" class="shop-btn grey">Сбросить</a>
+					<div class="shop2-clear-container"></div>
 				</div>
-				<a href="#" class="shop2-btn shop2-filter-go">{#SHOP2_SHOW#}</a>
-				<a href="{$SCRIPT_NAME}" class="shop2-btn">{#SHOP2_RESET_FILTER#}</a>
-				<div class="shop2-clear-container"></div>
-			
-
+				<div class="scrolling_area"></div>
 			</form><!-- Filter -->
 		{/if}
 

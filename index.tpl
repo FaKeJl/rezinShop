@@ -13,15 +13,17 @@
 {if $site.settings.sef_url && $smarty.server.QUERY_STRING && !$page.noindex}
 <link rel="canonical" href="http://{$smarty.server.HTTP_HOST}{$smarty.server.SCRIPT_URL}">
 {/if}
-<link rel="stylesheet" href="images/css/theme.scss.css">
+
 <link rel="stylesheet" href="/g/css/styles_articles_tpl.css">
 {$common_js}
 <script src="/g/libs/jquery/1.10.2/jquery.min.js"></script>
 {include file="global:shop2.v2-init.tpl"}
+<link rel="stylesheet" href="images/css/theme.scss.css">
 
 <script src="images/js/nouislider.js"></script>
 <script src="images/js/jquery.easydropdown.min.js"></script>
 <script src="images/js/owl.carousel.min.js"></script>
+<script src="images/js/custom_scroll.js"></script>
 
 <!--[if lt IE 10]>
 <script src="/g/libs/ie9-svg-gradient/0.0.1/ie9-svg-gradient.min.js"></script>
@@ -157,7 +159,9 @@
 				<main role="main" class="site-main">
 					<div class="site-main--inner">
 						<div class="main_content">
-							<div class="button">НАЖМИ СУКА!</div>
+							
+							<div class="push_to_filter">Фильтр товаров</div>
+
 							<div class="page-path">
 								<a href="#">Главная</a>  /  Каталог товаров
 							</div>
