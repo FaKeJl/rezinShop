@@ -165,7 +165,7 @@
 		},
 
 		destroy: function() {
-			this.$elem.removeAttr("style");
+			this.$elem.removeAttr("style").removeClass(__pluginName + "-opened");
 			this.$overlay.css({
 				visibility: "hidden",
 				opacity: 0
