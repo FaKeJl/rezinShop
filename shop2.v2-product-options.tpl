@@ -2,9 +2,9 @@
 	{if !$shop2.my.hide_vendor_in_list || $mode == 'product'}
 
 		{if $product.vendor_name}
-			<tr class="even">
-				<th>{$shop2.my.vendor_alias|default:#SHOP2_VENDOR#}:</th>
-				<td>
+			<div class="row_options">
+				<div class="row_title">{$shop2.my.vendor_alias|default:#SHOP2_VENDOR#}:</div>
+				<div class="row_body">
 					{if !$shop2.my.hide_vendor_name}
 						<a href="{get_seo_url uri_prefix=$shop2.uri mode="vendor" alias=$product.vendor_alias}">{$product.vendor_name}</a>
 					{/if}
@@ -18,8 +18,8 @@
 							</a>
 						</div>
 					{/if}
-				</td>
-			</tr>
+				</div>
+			</div>
 		{/if}
 
 	{/if}
@@ -50,7 +50,7 @@
 	{/if}
 
 	{if $c_vendor}
-		<table class="shop2-product-options">{$c_vendor}</table>
+		<div class="shop2-product-options">{$c_vendor}</div>
 	{/if}
 
 {else} {*-----------------------------------------------------------------------------------------*}
@@ -66,14 +66,14 @@
 				{assign var="option" value=$meta.$o_name}
 
 				{if $option.type != 'html' && (($mode == 'product' && $option.in_detail) || ($mode != 'product' && $option.in_list))}
-				<tr class="{cycle values="odd,even"}{if $option.type == 'color'} type-color{elseif $option.type == 'image2'} type-texture{elseif $option.type == 'select'} type-select{/if}">
+				<div class="row_options {cycle values="odd,even"}{if $option.type == 'color'} type-color{elseif $option.type == 'image2'} type-texture{elseif $option.type == 'select'} type-select{/if}">
 					{if $option.type == 'color'}
 		
 						{* цвет ------------------------------- *}
 						{if $o_values}
 							
-								<th>{$option.name}</th>
-								<td>
+								<div class="row_title">{$option.name}</div>
+								<div class="row_body">
 									<ul class="shop2-color-pick">
 										{foreach from=$o_values item=o_kinds key=o_color}
 											<li data-kinds="{','|implode:$o_kinds}" data-name="{$o_name}" data-value="{$o_color|escape}" class="{if $o_color==$product.meta[$o_name]}active-color{/if} shop2-cf">
@@ -81,7 +81,7 @@
 											</li>
 										{/foreach}
 									</ul>
-								</td>
+								</div>
 							
 						{/if}
 						{* /----------------------------------- *}
@@ -98,22 +98,22 @@
 								{if $kind_id == $product.kind_id && $value*}
 								{if $value}
 									
-										<th>{$option.name}</th>
-										<td>{$all_values.$value}</td>
+										<div class="row_title">{$option.name}</div>
+										<div class="row_body">{$all_values.$value}</div>
 									
 								{/if}
 								{* /------------ *}
 							{else}
 								{* больше *}
 								
-									<th>{$option.name}</th>
-									<td>
-										<select name="cf_{$o_name}" class="shop2-cf">
+									<div class="row_title">{$option.name}</div>
+									<div class="row_body">
+										<select name="cf_{$o_name}" class="dropdown shop2-cf">
 											{foreach from=$o_values item=o_kinds key=o_value}
 												<option  value="{$o_value}" data-name="{$o_name}" data-value="{$o_value}" data-kinds="{','|implode:$o_kinds}" {if $value==$o_value}selected="selected"{/if}>{$all_values.$o_value}</option>
 											{/foreach}
 										</select>
-									</td>
+									</div>
 								
 								{* /------------ *}
 							{/if}
@@ -128,11 +128,11 @@
 						{if $values}
 							{assign var="all_values" value=$meta.$o_name.options}
 							
-								<th>{$option.name}</th>
-								<td>
+								<div class="row_title">{$option.name}</div>
+								<div class="row_body">
 									{if $option.not_mod}
 										{* без модификаций *}
-											<select name="{$o_name}" class="additional-cart-params">
+											<select name="{$o_name}" class="dropdown additional-cart-params">
 												{foreach from=$values item=value key=k name=foo}
 												<option value="{$option.name}: {$all_values.$value}">{$all_values.$value}</option>
 												{/foreach}
@@ -144,7 +144,7 @@
 											{if !$smarty.foreach.foo.last}, {/if}
 										{/foreach}
 									{/if}
-								</td>
+								</div>
 							
 							{/if}
 						{* /----------------------------------- *}
@@ -156,10 +156,10 @@
 						{assign var="filename" value=$product.meta[$o_name].filename}
 						{if $filename}
 					
-							<th>{$option.name}</th>
-							<td>
+							<div class="row_title">{$option.name}</div>
+							<div class="row_body">
 								<a href="{$FILES_DIR}{$filename}" class="file"><span class="icon"></span>{#SHOP2_DOWNLOAD#}</a>
-							</td>
+							</div>
 					
 						{/if}
 						{* /----------------------------------- *}
@@ -179,12 +179,12 @@
 						
 						{if $images}
 						
-							<th>{$option.name}</th>
-							<td>
+							<div class="row_title">{$option.name}</div>
+							<div class="row_body">
 								<ul class="shop2-texture-pick">
 									{$images}
 								</ul>
-							</td>
+							</div>
 						
 						{/if}
 						{* /----------------------------------- *}
@@ -195,10 +195,10 @@
 						{assign var="text" value=$product.meta[$o_name]}
 						{if $text || $text === '0'}
 						
-							<th>{$option.name}</th>
-							<td>
+							<div class="row_title">{$option.name}</div>
+							<div class="row_body">
 								{$text}
-							</td>
+							</div>
 						
 						{/if}
 						{* /----------------------------------- *}
@@ -208,10 +208,10 @@
 						{* галочка --------------------------- *}
 						{assign var="checked" value=$product.meta[$o_name]}
 						{if $checked}
-							<th>{$option.name}</th>
-							<td>
+							<div class="row_title">{$option.name}</div>
+							<div class="row_body">
 								{if $checked}{#SHOP2_YES#}{else}{#SHOP2_NO#}{/if}
-							</td>
+							</div>
 						{/if}
 						{* /----------------------------------- *}
 
@@ -220,8 +220,8 @@
 						{* строка или число ------------------ *}
 						{if $product.meta[$o_name] || $product.meta[$o_name] === '0'}
 							
-								<th>{$option.name}</th>
-								<td>{$product.meta[$o_name]} {$option.unit}</td>
+								<div class="row_title">{$option.name}</div>
+								<div class="row_body">{$product.meta[$o_name]} {$option.unit}</div>
 							
 						{/if}
 						{* /---------------------------------- *}
@@ -231,21 +231,21 @@
 						{assign var="values" value=$product.meta[$o_name]}
 
 						{if $values|@count}
-							<th>{$option.name}</th>
-							<td>
+							<div class="row_title">{$option.name}</div>
+							<div class="row_body">
 								{include file="global:shop2.v2-color-ext.tpl" location="product"}
-							</td>
+							</div>
 						{/if}
 
 					{/if}
-					</tr>
+					</div>
 				{/if}
 			{/foreach}
 		{/if}
 	{/strip}{/capture}
 	
 	{if $c_options}
-		<table class="shop2-product-options">{$c_options}</table>
+		<div class="shop2-product-options">{$c_options}</div>
 	{/if}
 
 {/if}

@@ -9,9 +9,9 @@
 	
 	<div class="price-old {if $discount.discount_descr}question{/if}"><span>
 		<strong>{$obj.price_old|price_convert}</strong>
-		{if $shop2.view != 'list'}
+		
 			{if $shop2.my.price_fa_rouble}<em class="fa fa-rouble"></em>{else}{$currency.currency_shortname}{/if}
-		{/if}
+		
 	</span></div>
 
 	{if $discount.discount_descr}

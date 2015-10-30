@@ -5,6 +5,7 @@
 
 
 <form class="shop2-product-item tr" method="post" action="{$shop2.uri}?mode=cart&amp;action=add" accept-charset="utf-8">
+
     <div class="td column-name">
         <input type="hidden" name="kind_id" value="{$product.kind_id}" />
         <input type="hidden" name="product_id" value="{$product.product_id}" />
@@ -12,8 +13,8 @@
 
         {if $product.new || $product.special}
             <div class="product-label">
-                {if $product.special}<div class="product-spec">{$shop2.my.special_alias|default:#SHOP2_SPECIAL#}</div>{/if}
-                {if $product.new}<div class="product-new">{$shop2.my.new_alias|default:#SHOP2_NEW#}</div>{/if}
+                {if $product.new}<div class="product-new">NEW</div>{/if}
+                {if $product.special}<div class="product-spec">SPECIAL</div>{/if}
             </div>
         {/if}
 
@@ -25,7 +26,7 @@
             
             {include file="global:shop2.v2-product-article.tpl"}
 
-            {include file="global:shop2.v2-rating.tpl"}
+            {*include file="global:shop2.v2-rating.tpl"*}
         </div>
         {if $show_price}
             {include file="global:shop2.v2-product-actions.tpl"}
@@ -63,7 +64,7 @@
 
         {if !$shop2.my.mode_catalog}
             <div class="td column-add">
-                {include file="global:shop2.v2-buy-btn.tpl" type=1}
+                {include file="global:shop2.v2-buy-btn.tpl" type=2}
             </div>
         {/if}
     {/if}

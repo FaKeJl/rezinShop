@@ -266,9 +266,8 @@
 	<script src="images/js/flexFix.js"></script>
 	<script src="images/js/animit.js"></script>
 	<script src="images/js/swipeMenu2.js"></script>
+	<script src="images/js/jquery.pudge.js"></script>
 	<script src="images/js/main.js" charset="utf-8"></script>
-</body>
-</html>
 </body>
 <!-- ID -->
 </html>

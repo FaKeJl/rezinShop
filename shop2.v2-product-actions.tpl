@@ -5,7 +5,7 @@
 				{assign var="discount" value=$discounts.$e}
 
 				<dt {if $discount.gift_id}class="gift-action"{/if}>
-					<span class="icon-action">&nbsp;</span>
+					<span class="icon-action">{if !$discount.gift_id}%{/if}</span>
 					<span class="name-action">{$discount.discount_name|htmlspecialchars}</span>
 				</dt>
 				<dd>

@@ -5,15 +5,15 @@
 
 {if !$shop2.my.mode_catalog}
 	{if $pr.buy_mode == 0}
-		<button class="shop2-product-btn type-{$type} buy" type="submit">
+		<button class="shop-product-btn type-{$type} buy" type="submit">
 			<span>{$shop2.my.buy_alias|default:#SHOP2_BUY#}</span>
 		</button>
 	{elseif $pr.buy_mode == 1}
-		<button class="shop2-product-btn type-{$type} notavailable" disabled="disabled" type="submit">
+		<button class="shop-product-btn type-{$type} notavailable" disabled="disabled" type="submit">
 			<span>{$shop2.my.not_available_alias|default:#SHOP2_NOT_AVAILABLE#}</span>
 		</button>
 	{else}
-		<button class="shop2-product-btn type-{$type} onrequest" type="submit">
+		<button class="shop-product-btn type-{$type} onrequest" type="submit">
 			<span>{$shop2.my.preorder_alias|default:#SHOP2_PREORDER2#}</span>
 		</button>
 	{/if}

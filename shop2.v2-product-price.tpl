@@ -5,7 +5,10 @@
 		<div class="price-current">Цена по запросу</div>
 	{/if}
 {elseif $shop2.view == "list" && $mode != "product"}
-	<div class="price-current">{$obj.price|price_convert}</div>
+	<div class="price-current">
+	<strong>{$obj.price|price_convert}</strong>&nbsp;{if $shop2.my.price_fa_rouble}<em class="fa fa-rouble"></em>{else}{$currency.currency_shortname}{/if}
+
+	</div>
 {else}
 	<div class="price-current">
 		<strong>{$obj.price|price_convert}</strong> {if $shop2.my.price_fa_rouble}<em class="fa fa-rouble"></em>{else}{$currency.currency_shortname}{/if}

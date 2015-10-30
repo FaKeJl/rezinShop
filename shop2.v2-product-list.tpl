@@ -37,8 +37,8 @@
             {assign var="show_price" value=1}
         {/if}
 
-        <div class="shop2-pricelist">
-            <div class="tr">
+        <div class="shop-pricelist">
+            <div class="tr price_titles">
                 <div class="th column-name">{$shop2.my.pricelist_column_first|default:#SHOP2_PRODUCT#}</div>
                 {if $shop2.my.pricelist_article_in_column && !$shop2.my.hide_article}
                     <div class="th column-article">{$shop2.my.pricelist_article_alias|default:#SHOP2_ARTICLE#}</div>
@@ -52,7 +52,7 @@
                 {if $show_price}
                     <div class="th column-price">{#SHOP2_PRICE#}, {$currency.currency_shortname}</div>
                     {if !$shop2.my.mode_catalog}
-                        <div class="th column-amount">{#SHOP2_QTY#}</div>
+                        <div class="th column-amount">Колличество</div>
                         <div class="th column-add">&nbsp;</div>
                     {/if}
                 {/if}

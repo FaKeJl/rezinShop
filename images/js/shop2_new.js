@@ -1207,7 +1207,7 @@
 		addToCart: function() {
 
 
-			$(document).on('click', '.shop2-product-btn', function(e) {
+			$(document).on('click', '.shop-product-btn', function(e) {
 
 				var $this = $(this),
 					$form = $this.closest('form'),
@@ -1312,12 +1312,12 @@
 				text.trigger('keyup');
 			});
 
-			$document.on('keyup', '.shop2-product-amount input:text', function() {
+			$document.on('keyup', '.shop-product-amount input:text', function() {
 				var $this = $(this);
 				validate($this);
 			});
 
-			$document.keyFilter('.shop2-product-amount input:text', {
+			$document.keyFilter('.shop-product-amount input:text', {
 				type: shop2.options.amountType
 			});
 		},
