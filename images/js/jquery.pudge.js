@@ -166,6 +166,10 @@
 
 		destroy: function() {
 			this.$elem.removeAttr("style");
+			this.$overlay.css({
+				visibility: "hidden",
+				opacity: 0
+			});
 			this.$elem.removeData(__pluginName);
 		},
 
