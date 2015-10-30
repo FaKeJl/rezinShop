@@ -75,7 +75,7 @@
 				// filter
 				$filterInner.customScroll();
 				$filter.pudgeJS({slideToOpen: false});
-				$closeFilter.on("click", filterOpen);
+				$pushFilter.on("click", filterOpen);
 				$closeFilter.on("click", filterClose);
 
 			}, function(){
