@@ -18,7 +18,8 @@
 			overlay    : __pluginName + "-overlay",
 			overlayCss : true,
 			slideToOpen  : true,
-			slideToClose : true
+			slideToClose : true,
+			wrapper: false
 		}, opt);
 
 		this.$elem = $elem;
@@ -33,7 +34,7 @@
 
 		this.isOpened = false;
 		this.isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-		this.isRight = -1;
+		this.isRight = getBoundingClientRect(this.$elem[0]).left < this.$win.width()/2 ? -1 : 1;;
 		this.isTouch = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 		               .test(navigator.userAgent);
 
@@ -94,8 +95,6 @@
 
 			this.isOpened = true;
 			this.elemWidth = getBoundingClientRect(this.$elem[0]).width;
-			this.scrollTop = this.$html.scrollTop() || this.$body.scrollTop();
-			this.isRight = getBoundingClientRect(this.$elem[0]).left < 0 ? -1 : 1;
 
 			animit(this.$overlay[0]).queue({
 				opacity: 2,
@@ -115,10 +114,11 @@
 			this.$html.addClass("overflowHidden");
 			this.$elem.addClass(__pluginName + "-opened");
 
-			// if (this.isIOS && !!this.opt.wrapper) {
-			// 	this.$body.addClass("overflowHidden");
-			// 	this.opt.wrapper.css("top", -this.scrollTop);
-			// }
+			if (this.isIOS && !!this.opt.wrapper && !this.scrollTop) {
+				this.scrollTop = this.$html.scrollTop() || this.$body.scrollTop();
+				this.$body.addClass("overflowHidden");
+				$($(this.opt.wrapper)).css("top", -this.scrollTop);
+			}
 		},
 
 		close: function() {
@@ -145,16 +145,16 @@
 					self.$overlay.css("visibility", "hidden");
 				}
 
-				// if (self.isIOS && !!self.opt.wrapper) {
-				// 	setTimeout($.proxy(function() {
-				// 		self.$body.removeClass("overflowHidden");
-				// 		this.opt.wrapper.css("top", 0);
-				// 		$("html, body").scrollTop(this.scrollTop);
+				if (self.isIOS && !!self.opt.wrapper) {
+					setTimeout($.proxy(function() {
+						self.$body.removeClass("overflowHidden");
+						$(this.opt.wrapper).css("top", 0);
+						$("html, body").scrollTop(this.scrollTop);
 
-				// 		this.scrollTop = 0;
+						this.scrollTop = 0;
 
-				// 	}, self), 100);
-				// }
+					}, self), 100);
+				}
 			});
 
 			self.$elem.removeClass(__pluginName + "-opened");
@@ -234,7 +234,6 @@
 						bottom: 0,
 						opacity: 0,
 						visibility: "hidden"
-
 					});
 				};
 

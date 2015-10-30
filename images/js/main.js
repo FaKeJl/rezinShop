@@ -67,14 +67,19 @@
 
 			resizeController(1023, function(){
 				// menu
-				$nav.pudgeJS();
+				$nav.pudgeJS({
+					wrapper: '.site-wrapper'
+				});
 				$navTitle.on("click", menuSwiper);
 				$navTitle.off("click", menuToggle);
 				$dropWrap.removeClass("show");
 
 				// filter
 				$filterInner.customScroll();
-				$filter.pudgeJS({slideToOpen: false});
+				$filter.pudgeJS({
+					slideToOpen: false,
+					wrapper: '.site-wrapper'
+				});
 				$pushFilter.on("click", filterOpen);
 				$closeFilter.on("click", filterClose);
 
