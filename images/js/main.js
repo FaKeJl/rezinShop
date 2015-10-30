@@ -60,7 +60,10 @@
 		// resizeController 1023 - init|destroy plugins
 		(function(){
 			var $dropWrap = $(".categories--dropdown"),
-				$filterInner = $(".shop-filter-inner-wrap");
+				$filter = $(".shop-filter"),
+				$filterInner = $(".shop-filter-inner-wrap"),
+				$pushFilter = $(".push_to_filter"),
+				$closeFilter = $(".close_filter");
 
 			resizeController(1023, function(){
 				// menu
@@ -71,9 +74,9 @@
 
 				// filter
 				$filterInner.customScroll();
-				$(".shop-filter").pudgeJS({slideToOpen: false});
-				$(".push_to_filter").on("click", filterOpen);
-				$(".close_filter").on("click", filterClose);
+				$filter.pudgeJS({slideToOpen: false});
+				$closeFilter.on("click", filterOpen);
+				$closeFilter.on("click", filterClose);
 
 			}, function(){
 				$navTitle.on("click", menuToggle);
@@ -81,11 +84,12 @@
 				// plugins destroy
 				$nav.pudgeJS("destroy");
 				$filterInner.customScroll("destroy");
+				$filter.pudgeJS("destroy");
 
 				// rm event listener
 				$navTitle.off("click", menuSwiper);
-				$(".push_to_filter").off("click", filterOpen);
-				$(".close_filter").off("click", filterClose);
+				$pushFilter.off("click", filterOpen);
+				$closeFilter.off("click", filterClose);
 			});
 
 			function menuSwiper() {
@@ -93,15 +97,15 @@
 			};
 
 			function menuToggle() {
-				$(".categories--dropdown").toggleClass("show");
+				$dropWrap.toggleClass("show");
 			};
 
 			function filterOpen() {
-				$(".shop-filter").pudgeJS("open");
+				$filter.pudgeJS("open");
 			};
 
 			function filterClose() {
-				$(".shop-filter").pudgeJS("close");
+				$filter.pudgeJS("close");
 			};
 		})();
 
