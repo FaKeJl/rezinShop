@@ -24,6 +24,7 @@
 <script src="images/js/jquery.easydropdown.min.js"></script>
 <script src="images/js/owl.carousel.min.js"></script>
 <script src="images/js/custom_scroll.js"></script>
+<script src="images/js/tocca.min.js"></script>
 
 <!--[if lt IE 10]>
 <script src="/g/libs/ie9-svg-gradient/0.0.1/ie9-svg-gradient.min.js"></script>

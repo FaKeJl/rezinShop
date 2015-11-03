@@ -14,8 +14,7 @@
 			$siteWrapper = $(".site-wrapper"),
 			siteScrollTop = 0,
 			navIsOpened = false,
-			isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-		
+			isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);		
 		// table wrapp
 		$table.wrap("<div class=\"table-wrapper\"></div>");
 
@@ -93,8 +92,8 @@
 				$nav.pudgeJS({
 					wrapper: '.site-wrapper'
 				});
-				$navTitle.on("click", menuSwiper);
-				$navTitle.off("click", menuToggle);
+				$navTitle.on(isMobile ? "touch" : "click", menuSwiper);
+				$navTitle.off(isMobile ? "touch" : "click", menuToggle);
 				$dropWrap.removeClass("show");
 
 				// filter
@@ -103,11 +102,11 @@
 					slideToOpen: false,
 					wrapper: '.site-wrapper'
 				});
-				$pushFilter.on("click", filterOpen);
-				$closeFilter.on("click", filterClose);
+				$pushFilter.on(isMobile ? "touch" : "click", filterOpen);
+				$closeFilter.on(isMobile ? "touch" : "click", filterClose);
 
 			}, function(){
-				$navTitle.on("click", menuToggle);
+				$navTitle.on(isMobile ? "touch" : "click", menuToggle);
 
 				// plugins destroy
 				$nav.pudgeJS("destroy");
@@ -115,9 +114,9 @@
 				$filter.pudgeJS("destroy");
 
 				// rm event listener
-				$navTitle.off("click", menuSwiper);
-				$pushFilter.off("click", filterOpen);
-				$closeFilter.off("click", filterClose);
+				$navTitle.off(isMobile ? "touch" : "click", menuSwiper);
+				$pushFilter.off(isMobile ? "touch" : "click", filterOpen);
+				$closeFilter.off(isMobile ? "touch" : "click", filterClose);
 			});
 
 			function menuSwiper() {
