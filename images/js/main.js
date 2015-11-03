@@ -30,6 +30,29 @@
 			});
 		});
 
+		// resizeController 510 mv blocks
+		(function(){
+			resizeController(510, optionsSwap, function(){
+				optionsSwap(true);
+			});
+
+			function optionsSwap(flag){
+				var pasteTome = document.querySelectorAll('.shop2-product-item .mobile_options');
+			
+				[].forEach.call(pasteTome, function(elem){
+					var parent = elem.parentNode,
+						optionsW = parent.querySelector(".shop2-product-options"),
+						optionsP = parent.querySelector(".td.column-options");
+					
+					if (flag) {
+						optionsP.appendChild(optionsW);
+					} else {
+						elem.appendChild(optionsW);
+					}
+				});
+			}
+		})();
+
 		// resizeController 768 mv blocks
 		(function(){
 			resizeController(768, pricelistSwapper, function(){
@@ -159,6 +182,30 @@
 		// sorting toggle
 		toggleElem(".view_wrapper", ".show_me_view")
 		toggleElem(".sorting", ".sort-title")
+
+
+		// options toggle
+
+		$(".push_me div").click(function(){
+			var $parent = $(this).closest('.mobile_options'),
+				$optionWrapper = $parent.find(".shop2-product-options"),
+				height = 0, isOpened;
+
+			$parent.toggleClass('open');
+
+			isOpened = $parent.hasClass('open');
+
+			$optionWrapper.find(".row_options").each(function(index, el) {
+				height += $(el).height();
+			});
+
+			animit($optionWrapper[0]).queue({
+				maxHeight: isOpened ? height + "px" : "0px"
+			}, {
+				duration: .3,
+				timing: "ease"
+			}).play();
+		});	
 
 		// toggle function
 		function toggleElem(elem, pushEl) {

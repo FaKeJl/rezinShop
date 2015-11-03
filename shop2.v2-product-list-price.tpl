@@ -4,8 +4,8 @@
 {/if}
 
 
-<form class="shop2-product-item tr" method="post" action="{$shop2.uri}?mode=cart&amp;action=add" accept-charset="utf-8">
-
+<form class="shop2-product-item" method="post" action="{$shop2.uri}?mode=cart&amp;action=add" accept-charset="utf-8">
+    <div class="row_group tr">
     <div class="td column-name">
         <input type="hidden" name="kind_id" value="{$product.kind_id}" />
         <input type="hidden" name="product_id" value="{$product.product_id}" />
@@ -68,5 +68,11 @@
             </div>
         {/if}
     {/if}
-
+    </div>
+    <div class="mobile_options">
+        <div class="toggle_options">
+            <div class="push_me"><div>Параметры</div></div>
+            <div class="compare_me">К сравнению</div>
+        </div>
+    </div>
 </form>

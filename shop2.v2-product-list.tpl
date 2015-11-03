@@ -50,7 +50,7 @@
                     <div class="th column-options">{#SHOP2_OPTIONS#}{$options_btn}</div>
                 {/if}
                 {if $show_price}
-                    <div class="th column-price">{#SHOP2_PRICE#}, {$currency.currency_shortname}</div>
+                    <div class="th column-price">{#SHOP2_PRICE#}, {$currency.currency_shortname} <div class="amount_copy">Колличество</div></div>
                     {if !$shop2.my.mode_catalog}
                         <div class="th column-amount">Колличество</div>
                         <div class="th column-add">&nbsp;</div>

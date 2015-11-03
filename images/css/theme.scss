@@ -81,6 +81,7 @@ $HnColor:   #383838;					// Цвет заголовка
 
 @include font-face('OpenSans', 'open_sans/open_sans-r');
 @include font-face('OpenSans', 'open_sans/open_sans-b', $weight: bold);
+@include font-face('open_sans-s-b', 'open_sans/open_sans-s-b');
 
 @import "css/_styles.scss";
 @import "css/_shop.scss";

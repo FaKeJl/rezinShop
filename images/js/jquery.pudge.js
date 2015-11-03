@@ -92,6 +92,7 @@
 					};
 				};
 			};
+			
 
 			this.isOpened = true;
 			this.elemWidth = getBoundingClientRect(this.$elem[0]).width;
