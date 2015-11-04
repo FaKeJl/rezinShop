@@ -2,7 +2,7 @@
  * pudgeJs - JQuery plugin for sliding menus and blocks.
  * @version v0.0.1
  * @link https://gitlab.dev.cs.m/pudgeJs
- * @update 29.10.15
+ * @update 04.11.15
  * @license MIT
  */
 /*global $, jQuery*/
@@ -92,7 +92,6 @@
 					};
 				};
 			};
-			
 
 			this.isOpened = true;
 			this.elemWidth = getBoundingClientRect(this.$elem[0]).width;
@@ -112,13 +111,14 @@
 				timing: self.opt.timing
 			}).play();
 
-			this.$html.addClass("overflowHidden");
+			this.$html.addClass("overflowHidden userSelect");
 			this.$elem.addClass(__pluginName + "-opened");
+
 
 			if (this.isIOS && !!this.opt.wrapper && !this.scrollTop) {
 				this.scrollTop = this.$html.scrollTop() || this.$body.scrollTop();
-				this.$body.addClass("overflowHidden");
-				$($(this.opt.wrapper)).css("top", -this.scrollTop);
+				this.$body.addClass("overflowHidden userSelect");
+				$(this.opt.wrapper).css("top", -this.scrollTop);
 			}
 		},
 
@@ -142,13 +142,13 @@
 				timing: self.opt.timing
 			}).play(function() {
 				if (!self.isOpened) {
-					self.$html.removeClass("overflowHidden");
+					self.$html.removeClass("overflowHidden userSelect");
 					self.$overlay.css("visibility", "hidden");
 				}
 
 				if (self.isIOS && !!self.opt.wrapper) {
 					setTimeout($.proxy(function() {
-						self.$body.removeClass("overflowHidden");
+						self.$body.removeClass("overflowHidden userSelect");
 						$(this.opt.wrapper).css("top", 0);
 						$("html, body").scrollTop(this.scrollTop);
 
@@ -172,6 +172,7 @@
 				visibility: "hidden",
 				opacity: 0
 			});
+			this.$doc.off(this.touchEvents.start + "." + __pluginName);
 			this.$elem.removeData(__pluginName);
 		},
 
@@ -235,6 +236,7 @@
 						bottom: 0,
 						opacity: 0,
 						visibility: "hidden"
+
 					});
 				};
 
@@ -273,8 +275,8 @@
 					                 "horizontal" : "vertical";
 				};
 
-				if ( (self.coord.sx < 20 && !(self.isRight + 1) ||
-				      self.coord.sx > self.$win.width() - 20 && !!(self.isRight + 1) ) &&
+				if ( (self.coord.sx < 40 && !(self.isRight + 1) ||
+				      self.coord.sx > self.$win.width() - 40 && !!(self.isRight + 1) ) &&
 				     !self.isIOS && !self.isOpened && self.direction === "horizontal" &&
 				      self.opt.slideToOpen) {
 					moving();
@@ -310,8 +312,8 @@
 						self.moveSpeed.shift();
 					}
 
-					if (!self.$html.hasClass("overflowHidden")) {
-						self.$html.addClass("overflowHidden");
+					if (!self.$html.hasClass("overflowHidden userSelect")) {
+						self.$html.addClass("overflowHidden userSelect");
 					}
 
 					animit(self.$overlay[0]).queue({
@@ -329,16 +331,23 @@
 			};
 
 			function onEnd(event) {
-				var msl, speed, distance, time, direction;
+				var msl, speed, distance, time, direction, position;
 
 				self.coord.lx = Math.abs(pointer(event).x);
 				self.coord.ly = Math.abs(pointer(event).y);
+
 
 				if (self.moveSpeed.length > 1) {
 					msl = self.moveSpeed.length;
 					distance = Math.abs(self.moveSpeed[msl-1].s - self.moveSpeed[msl-2].s);
 					time = self.moveSpeed[msl-1].t - self.moveSpeed[msl-2].t;
 					speed = (distance / time);
+
+					if (!(self.isRight + 1)) {
+						position = Math.abs(getBoundingClientRect(self.$elem[0]).left);
+					} else {
+						position = Math.abs(getBoundingClientRect(self.$elem[0]).right - self.$win.width());
+					}
 
 					if ( self.moveSpeed[msl-1].s > self.moveSpeed[msl-2].s &&
 					   !(self.isRight + 1) )  {
@@ -354,9 +363,9 @@
 						direction = "right";
 					}
 
-					if (speed <= .1 && Math.abs(getTransform(self.$elem[0]).x) < self.elemWidth / 2) {
+					if (speed <= .1 && position < self.elemWidth / 2) {
 						self.open("ease-out");
-					} else if (speed <= .1 && Math.abs(getTransform(self.$elem[0]).x) > self.elemWidth / 2) {
+					} else if (speed <= .1 && position > self.elemWidth / 2) {
 						self.close("ease-out");
 					} else if (speed > .1 && direction === "left" && !(self.isRight + 1)) {
 						self.close("ease-out");
